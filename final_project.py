@@ -34,9 +34,9 @@ def insecurity_vs_unemployment_scatter_plot(df: pd.DataFrame) -> None:
 
 def insecurity_vs_unemployment_with_time_scatter_plot(df: pd.DataFrame) -> None:
     """
-    Paramater - df: pd.DataFrame - contains food insecurity and unemployment data
-    Plots a scatter plot of food insecurity vs unemployment with respect to
-    time from 2001 - 2021 
+    Paramater - df: pd.DataFrame - contains food insecurity and unemployment
+    data. Plots a scatter plot of food insecurity vs unemployment with respect
+    to time from 2001 - 2021 
     """
     trace1 = go.Scatter(x=df['Year'], y=df['percent unemployed'],
                         name='Unemployment Rates')
@@ -46,14 +46,15 @@ def insecurity_vs_unemployment_with_time_scatter_plot(df: pd.DataFrame) -> None:
                        'Rates', xaxis=dict(title='Time'),
                        yaxis=dict(title='Rate'))
     fig = go.Figure(data=[trace1, trace2], layout=layout)
-    fig.write_image('images/insecurity_vs_unemployment_with_time_scatter_plot.png', engine='kaleido')
+    fig.write_image('images/insecurity_vs_unemployment_with_time_scatter_'
+                    'plot.png', engine='kaleido')
 
 
 def insecurity_vs_unemployment_with_time_bar_plot(df: pd.DataFrame) -> None:
     """
-    Paramater - df: pd.DataFrame - contains food insecurity and unemployment data
-    Plots a bar plot of food insecurity vs unemployment with respect to time
-    from 2001 - 2021 
+    Paramater - df: pd.DataFrame - contains food insecurity and unemployment
+    data. Plots a bar plot of food insecurity vs unemployment with respect to
+    time from 2001 - 2021 
     """
     trace1 = go.Bar(x=df['Year'], y=df['percent unemployed'],
                     name='Unemployment Rates')
@@ -63,11 +64,13 @@ def insecurity_vs_unemployment_with_time_bar_plot(df: pd.DataFrame) -> None:
                        'Unemployment Rates', xaxis=dict(title='Time'),
                        yaxis=dict(title='Rate'), barmode='overlay')
     fig = go.Figure(data=[trace2, trace1], layout=layout)
-    fig.write_image('images/insecurity_vs_unemployment_with_time_bar_plot.png',
-                    engine='kaleido')
+    fig.write_image('images/insecurity_vs_unemployment_with_time_bar_'
+                    'plot.png', engine='kaleido')
 
 
-def delta_insecurity_vs_delta_unemployment_with_time_bar_plot(df: pd.DataFrame) -> None:
+def delta_insecurity_vs_delta_unemployment_with_time_bar_plot(
+    df: pd.DataFrame
+) -> None:
     """
     Paramater - df: pd.DataFrame - contains food insecurity and unemployment
     data
@@ -82,52 +85,66 @@ def delta_insecurity_vs_delta_unemployment_with_time_bar_plot(df: pd.DataFrame) 
                        'Unemployment Rates', xaxis=dict(title='Time'),
                        yaxis=dict(title='Rate'))
     fig = go.Figure(data=[trace2, trace1], layout=layout)
-    fig.write_image('images/delta_insecurity_vs_delta_unemployment_with_time_bar_plot.png', engine='kaleido')
+    fig.write_image('images/delta_insecurity_vs_delta_unemployment_with_time_'
+                    'bar_plot.png', engine='kaleido')
 
 
-def ratio_insecurity_vs_unemployment_with_time_bar_plot(df: pd.DataFrame) -> None:
+def ratio_insecurity_vs_unemployment_with_time_bar_plot(
+    df: pd.DataFrame
+) -> None:
     """
-    Paramater - df: pd.DataFrame - contains food insecurity and unemployment data
-    Plots a bar plot of the ratio food insecurity vs unemployment with respect
-    to time from 2001 - 2021 
+    Paramater - df: pd.DataFrame - contains food insecurity and unemployment
+    data. Plots a bar plot of the ratio food insecurity vs unemployment with
+    respect to time from 2001 - 2021 
     """
     fig = px.bar(df, x='Year', y='Ratio_Food_Insecurity_Unemployment')
     fig.update_layout(
         xaxis_title="Year",
         yaxis_title="food insecurity percentage over unemployment percentage",
-        title="ratio food insecurity vs unemployment with respect to time from 2001 - 2021"
+        title="ratio food insecurity vs unemployment with respect to time from "
+        "2001 - 2021"
     )
-    fig.write_image('images/ratio_insecurity_vs_unemployment_with_time_bar_plot.png', engine='kaleido')
+    fig.write_image('images/ratio_insecurity_vs_unemployment_with_time_bar_'
+                    'plot.png', engine='kaleido')
 
 
-def ratio_insecurity_vs_unemployment_with_time_scatter_plot(df: pd.DataFrame) -> None:
+def ratio_insecurity_vs_unemployment_with_time_scatter_plot(
+    df: pd.DataFrame
+) -> None:
     """
-    Paramater - df: pd.DataFrame - contains food insecurity and unemployment data
-    Plots a scatter plot of the ratio food insecurity vs unemployment with
-    respect to time from 2001 - 2021 
+    Paramater - df: pd.DataFrame - contains food insecurity and unemployment
+    data. Plots a scatter plot of the ratio food insecurity vs unemployment
+    with respect to time from 2001 - 2021 
     """
     fig = px.scatter(df, x='Year', y='Ratio_Food_Insecurity_Unemployment')
     fig.update_layout(
         xaxis_title="Year",
         yaxis_title="food insecurity percentage over unemployment percentage",
-        title="ratio food insecurity vs unemployment with respect to time from 2001 - 2021"
+        title="ratio food insecurity vs unemployment with respect to time "
+        "from 2001 - 2021"
     )
-    fig.write_image('images/ratio_insecurity_vs_unemployment_with_time_scatter_plot.png', engine='kaleido')
+    fig.write_image('images/ratio_insecurity_vs_unemployment_with_time_'
+                    'scatter_plot.png', engine='kaleido')
 
 
-def ratio_delta_insecurity_vs_delta_unemployment_with_time_bar_plot(df: pd.DataFrame) -> None:
+def ratio_delta_insecurity_vs_delta_unemployment_with_time_bar_plot(
+    df: pd.DataFrame
+) -> None:
     """
-    Paramater - df: pd.DataFrame - contains food insecurity and unemployment data
-    Plots a bar plot of the ratio change in food insecurity vs change in
+    Paramater - df: pd.DataFrame - contains food insecurity and unemployment
+    data. Plots a bar plot of the ratio change in food insecurity vs change in
     unemployment with respect to time from 2001 - 2021 
     """
     fig = px.bar(df, x='Year', y='Ratio_Delta_Food_Insecurity_Unemployment')
     fig.update_layout(
         xaxis_title="Year",
-        yaxis_title="change in food insecurity percentage over change in unemployment percentage",
-        title="ratio change in food insecurity vs change in unemployment with respect to time from 2001 - 2021"
+        yaxis_title="change in food insecurity percentage over change in "
+        "unemployment percentage",
+        title="ratio change in food insecurity vs change in unemployment with"
+        " respect to time from 2001 - 2021"
     )
-    fig.write_image('images/ratio_delta_insecurity_vs_delta_unemployment_with_time_bar_plot.png', engine='kaleido')
+    fig.write_image('images/ratio_delta_insecurity_vs_delta_unemployment_with_'
+                    'time_bar_plot.png', engine='kaleido')
 
 
 def unemployment_and_education(unemployment_data: pd.DataFrame) -> None:
@@ -283,11 +300,11 @@ def gender_and_food(food_data: pd.DataFrame) -> None:
 
 def race_percent_change(food_data: pd.DataFrame) -> pd.DataFrame:
     """
-    Aims to answer: "Which race had the biggest percent change in food insecure
-    rates from pre-covid to post covid?" Shows the differences in each race and
-    potential impact of COVID-19 upon each. Takes food_data as a pandas
-    dataframe and returns a pandas dataframe with information on the percent
-    change in food insecurity rates for each race/ethnicity.
+    Aims to answer: "Which race had the biggest percent change in food
+    insecure rates from pre-covid to post covid?" Shows the differences in
+    each race and potential impact of COVID-19 upon each. Takes food_data as
+    a pandas dataframe and returns a pandas dataframe with information on the
+    percent change in food insecurity rates for each race/ethnicity.
     """
     food_data = food_data[['Year', 'Category', 'Subcategory',
                            'Food insecure-percent']]
@@ -302,8 +319,10 @@ def race_percent_change(food_data: pd.DataFrame) -> pd.DataFrame:
 
 
 def main():
-    food_security_all_households: pd.DataFrame = pd.read_csv("food_security/Food security, all households_2021.csv")
-    unemployment_data: pd.DataFrame = pd.read_csv('unemployment/unemployment_data_us.csv')
+    food_security_all_households: pd.DataFrame = pd.read_csv(
+        "food_security/Food security, all households_2021.csv")
+    unemployment_data: pd.DataFrame = pd.read_csv(
+        'unemployment/unemployment_data_us.csv')
 
     # reformat and sort df by date
     unemployment_data['Date'] = pd.to_datetime(unemployment_data['Date'],
@@ -323,24 +342,35 @@ def main():
     Explores the correlation between unemployment and food insecurity rates in
     the United States
     """
-    food_insecurity_df: pd.DataFrame = pd.read_csv("food_security/Food security, all households_2021.csv")
+    food_insecurity_df: pd.DataFrame = pd.read_csv(
+        "food_security/Food security, all households_2021.csv")
     food_insecurity_df = food_insecurity_df[food_insecurity_df['Category'] ==
                                             'All households']
     unemployment_df = pd.read_csv('unemployment/unemployment-Sheet1.csv')
     unemployment_df = unemployment_df.rename(columns={'year': 'Year'})
     combined_df = food_insecurity_df.merge(unemployment_df, on="Year")
-    combined_df['Change_Food_Insecurity'] = combined_df['Food insecure-percent'].pct_change()
-    combined_df['Change_unemployed'] = combined_df['percent unemployed'].pct_change()
+    combined_df['Change_Food_Insecurity'] = (
+        combined_df['Food insecure-percent'].pct_change()
+    )
+    combined_df['Change_unemployed'] = (
+        combined_df['percent unemployed'].pct_change()
+    )
     combined_df = combined_df.reset_index()
-    combined_df['Ratio_Food_Insecurity_Unemployment'] = combined_df['Food insecure-percent'] / combined_df['percent unemployed']
-    combined_df['Ratio_Delta_Food_Insecurity_Unemployment'] = combined_df['Change_Food_Insecurity'] / combined_df['Change_unemployed']
+    combined_df['Ratio_Food_Insecurity_Unemployment'] = (
+        combined_df['Food insecure-percent'] / 
+        combined_df['percent unemployed'])
+    combined_df['Ratio_Delta_Food_Insecurity_Unemployment'] = (
+        combined_df['Change_Food_Insecurity'] / 
+        combined_df['Change_unemployed'])
     insecurity_vs_unemployment_scatter_plot(combined_df)
     insecurity_vs_unemployment_with_time_scatter_plot(combined_df)
     insecurity_vs_unemployment_with_time_bar_plot(combined_df)
     delta_insecurity_vs_delta_unemployment_with_time_bar_plot(combined_df)
     ratio_insecurity_vs_unemployment_with_time_bar_plot(combined_df)
     ratio_insecurity_vs_unemployment_with_time_scatter_plot(combined_df)
-    ratio_delta_insecurity_vs_delta_unemployment_with_time_bar_plot(combined_df)
+    ratio_delta_insecurity_vs_delta_unemployment_with_time_bar_plot(
+        combined_df
+    )
 
     insecurity_vs_unemployment_scatter_plot_test()
     insecurity_vs_unemployment_with_time_scatter_plot_test()
@@ -355,7 +385,8 @@ def main():
     food_insecurity_test()
     unemp_and_food_insecurity_test()
 
-    food_data: pd.DataFrame = pd.read_csv("food_security/Food security, all households_2021.csv")
+    food_data: pd.DataFrame = pd.read_csv(
+        "food_security/Food security, all households_2021.csv")
     race_and_unemployment(food_data)
     gender_and_food(food_data)
     race_percent_change(food_data)
@@ -402,7 +433,8 @@ def delta_insecurity_vs_delta_unemployment_with_time_bar_plot_test() -> None:
     Tests to make sure that the delta_insecurity_vs_delta_unemployment_with_
     time_bar_plot function has an output graph file.
     """
-    file_path = "images/delta_insecurity_vs_delta_unemployment_with_time_bar_plot.png"
+    file_path = "images/delta_insecurity_vs_delta_unemployment_with_time_bar"
+    "_plot.png"
     if os.path.exists(file_path):
         print("The file exists.")
     else:
@@ -414,7 +446,8 @@ def ratio_insecurity_vs_unemployment_with_time_bar_plot_test() -> None:
     Tests to make sure that the ratio_insecurity_vs_unemployment_with_time_bar
     _plot_test function has an output graph file.
     """
-    file_path = "images/ratio_insecurity_vs_unemployment_with_time_bar_plot.png"
+    file_path = "images/ratio_insecurity_vs_unemployment_with_time_bar_"
+    "plot.png"
     if os.path.exists(file_path):
         print("The file exists.")
     else:
@@ -426,7 +459,8 @@ def ratio_insecurity_vs_unemployment_with_time_scatter_plot_test() -> None:
     Tests to make sure that the ratio_insecurity_vs_unemployment_with_time_
     scatter_plot function has an output graph file.
     """
-    file_path = "images/ratio_insecurity_vs_unemployment_with_time_scatter_plot.png"
+    file_path = "images/ratio_insecurity_vs_unemployment_with_time_scatter_"
+    "plot.png"
     if os.path.exists(file_path):
         print("The file exists.")
     else:
@@ -438,7 +472,8 @@ def ratio_delta_insecurity_vs_delta_unemployment_with_time_bar_plot_test() -> No
     Tests to make sure that the ratio_delta_insecurity_vs_delta_unemployment_
     with_time_bar_plot function has an output graph file.
     """
-    file_path = "images/ratio_delta_insecurity_vs_delta_unemployment_with_time_bar_plot.png"
+    file_path = ("images/ratio_delta_insecurity_vs_delta_unemployment_with_"
+                 "time_bar_plot.png")
     if os.path.exists(file_path):
         print("The file exists.")
     else:

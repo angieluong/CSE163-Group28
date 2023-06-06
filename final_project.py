@@ -362,6 +362,10 @@ def main():
 
 
 def insecurity_vs_unemployment_scatter_plot_test() -> None:
+    """
+    Tests to make sure that the insecurity_vs_unemployment_scatter_plot
+    function has an output graph file.
+    """
     file_path = "images/insecurity_vs_unemployment_scatter_plot.png"
     if os.path.exists(file_path):
         print("The file exists.")
@@ -370,6 +374,10 @@ def insecurity_vs_unemployment_scatter_plot_test() -> None:
 
 
 def insecurity_vs_unemployment_with_time_scatter_plot_test() -> None:
+    """
+    Tests to make sure that the insecurity_vs_unemployment_with_time_scatter_
+    plot function has an output graph file.
+    """
     file_path = "images/insecurity_vs_unemployment_with_time_scatter_plot.png"
     if os.path.exists(file_path):
         print("The file exists.")
@@ -378,6 +386,10 @@ def insecurity_vs_unemployment_with_time_scatter_plot_test() -> None:
 
 
 def insecurity_vs_unemployment_with_time_bar_plot_test() -> None:
+    """
+    Tests to make sure that the insecurity_vs_unemployment_with_time_bar_plot
+    function has an output graph file.
+    """
     file_path = "images/insecurity_vs_unemployment_with_time_bar_plot.png"
     if os.path.exists(file_path):
         print("The file exists.")
@@ -386,6 +398,10 @@ def insecurity_vs_unemployment_with_time_bar_plot_test() -> None:
 
 
 def delta_insecurity_vs_delta_unemployment_with_time_bar_plot_test() -> None:
+    """
+    Tests to make sure that the delta_insecurity_vs_delta_unemployment_with_
+    time_bar_plot function has an output graph file.
+    """
     file_path = "images/delta_insecurity_vs_delta_unemployment_with_time_bar_plot.png"
     if os.path.exists(file_path):
         print("The file exists.")
@@ -394,6 +410,10 @@ def delta_insecurity_vs_delta_unemployment_with_time_bar_plot_test() -> None:
 
 
 def ratio_insecurity_vs_unemployment_with_time_bar_plot_test() -> None:
+    """
+    Tests to make sure that the ratio_insecurity_vs_unemployment_with_time_bar
+    _plot_test function has an output graph file.
+    """
     file_path = "images/ratio_insecurity_vs_unemployment_with_time_bar_plot.png"
     if os.path.exists(file_path):
         print("The file exists.")
@@ -402,6 +422,10 @@ def ratio_insecurity_vs_unemployment_with_time_bar_plot_test() -> None:
 
 
 def ratio_insecurity_vs_unemployment_with_time_scatter_plot_test() -> None:
+    """
+    Tests to make sure that the ratio_insecurity_vs_unemployment_with_time_
+    scatter_plot function has an output graph file.
+    """
     file_path = "images/ratio_insecurity_vs_unemployment_with_time_scatter_plot.png"
     if os.path.exists(file_path):
         print("The file exists.")
@@ -410,6 +434,10 @@ def ratio_insecurity_vs_unemployment_with_time_scatter_plot_test() -> None:
 
 
 def ratio_delta_insecurity_vs_delta_unemployment_with_time_bar_plot_test() -> None:
+    """
+    Tests to make sure that the ratio_delta_insecurity_vs_delta_unemployment_
+    with_time_bar_plot function has an output graph file.
+    """
     file_path = "images/ratio_delta_insecurity_vs_delta_unemployment_with_time_bar_plot.png"
     if os.path.exists(file_path):
         print("The file exists.")
@@ -418,6 +446,10 @@ def ratio_delta_insecurity_vs_delta_unemployment_with_time_bar_plot_test() -> No
 
 
 def race_and_unemployment_test() -> None:
+    """
+    Tests to make sure that the race_and_employment function has an output
+    graph file.
+    """
     file_path = "images/race_and_unemployment.png"
     if os.path.exists(file_path):
         print("The file exists.")
@@ -426,6 +458,10 @@ def race_and_unemployment_test() -> None:
 
 
 def gender_and_food_test() -> None:
+    """
+    Tests to make sure that the gender_and_food
+    function has an output graph file.
+    """
     file_path = "images/gender_and_food.png"
     if os.path.exists(file_path):
         print("The file exists.")
@@ -434,6 +470,10 @@ def gender_and_food_test() -> None:
 
 
 def unemployment_and_education_test() -> None:
+    """
+    Tests to make sure that the unemployment_and_education function has an
+    output graph file.
+    """
     file_path = "images/unemp_edu.png"
     if os.path.exists(file_path):
         print("The file exists.")
@@ -442,6 +482,10 @@ def unemployment_and_education_test() -> None:
 
 
 def food_insecurity_test() -> None:
+    """
+    Tests to make sure that the food_insecurity function has an output graph
+    file.
+    """
     file_path = "images/food_insecurity_all_hh.png"
     if os.path.exists(file_path):
         print("The file exists.")
@@ -450,6 +494,10 @@ def food_insecurity_test() -> None:
 
 
 def unemp_and_food_insecurity_test() -> None:
+    """
+    Tests to make sure that the unemp_and_food_insecurity function has an
+    output graph file.
+    """
     file_path = "images/unemp_food.png"
     if os.path.exists(file_path):
         print("The file exists.")

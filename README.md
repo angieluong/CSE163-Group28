@@ -11,3 +11,7 @@ To download the proper libraries to run our code, type the following commands in
 - `pip install plotly.express`
 
 ### How to run the project's Python code:
+1. Visit our public GitHub repository at [this link]: (https://github.com/angieluong/CSE163-Group28)
+2. [Git clone](git@github.com:angieluong/CSE163-Group28.git) our repository using an SSH key
+3. Make sure all the proper libraries are installed
+4. Run the `final_project.py` file in your IDE of choice

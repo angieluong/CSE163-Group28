@@ -16,8 +16,9 @@ import plotly.graph_objects as go
 
 def insecurity_vs_unemployment_scatter_plot(df: pd.DataFrame) -> None:
     """
-    Paramater - df: pd.DataFrame - contains food insecurity and unemployment data
-    Plots a scatter plot of food insecurity vs unemployment from 2001 - 2021 
+    Paramater - df: pd.DataFrame - contains food insecurity and unemployment
+    data
+    Plots a scatter plot of food insecurity vs unemployment from 2001 - 2021
     """
     fig = px.scatter(df, x='percent unemployed', y='Food insecure-percent',
                      range_y=[0, 20], range_x=[3,10], trendline="ols",
@@ -62,12 +63,14 @@ def insecurity_vs_unemployment_with_time_bar_plot(df: pd.DataFrame) -> None:
                        'Unemployment Rates', xaxis=dict(title='Time'),
                        yaxis=dict(title='Rate'), barmode='overlay')
     fig = go.Figure(data=[trace2, trace1], layout=layout)
-    fig.write_image('images/insecurity_vs_unemployment_with_time_bar_plot.png', engine='kaleido')
+    fig.write_image('images/insecurity_vs_unemployment_with_time_bar_plot.png',
+                    engine='kaleido')
 
 
 def delta_insecurity_vs_delta_unemployment_with_time_bar_plot(df: pd.DataFrame) -> None:
     """
-    Paramater - df: pd.DataFrame - contains food insecurity and unemployment data
+    Paramater - df: pd.DataFrame - contains food insecurity and unemployment
+    data
     Plots a bar plot of the change in food insecurity vs change in
     unemployment with respect to time from 2001 - 2021 
     """
@@ -164,8 +167,6 @@ def food_insecurity(food_security_data: pd.DataFrame) -> None:
                             food_security_data['Category'] == 'All households'
                           ]
 
-
-    # FOOD INSECURITY IN ALL HOUSEHOLDS PLOT (2001-2021)
     food_insecurity_all_hh = px.line(food_all_households, x='Year',
                                      y='Food insecure-percent')
     food_insecurity_all_hh.update_layout(
@@ -182,7 +183,8 @@ def food_insecurity(food_security_data: pd.DataFrame) -> None:
 def unemp_and_food_insecurity(food_security_data: pd.DataFrame,
                               unemployment_data: pd.DataFrame) -> None:
     """
-    Takes the given unemployment and food security dataframes and creates a multi-line line
+    Takes the given unemployment and food security dataframes and creates a
+    multi-line line
     plot showing the unemployment percentage amongst those with high school,
     associate's, and professional degrees as well as the food insecurity rates
     in the U.S. from 2010-2020.
@@ -199,7 +201,7 @@ def unemp_and_food_insecurity(food_security_data: pd.DataFrame,
     # create line graph
     unemp_and_edu = px.line(unemployment_data, x='Date', y='High_School')
 
-    unemp_and_edu.add_scatter(x=unemployment_data['Date'], 
+    unemp_and_edu.add_scatter(x=unemployment_data['Date'],
                               y=unemployment_data['High_School'],
                               mode='lines', name='High School Degree')
     unemp_and_edu.add_scatter(x=unemployment_data['Date'],
@@ -219,7 +221,7 @@ def unemp_and_food_insecurity(food_security_data: pd.DataFrame,
     )
 
     unemp_and_edu.write_image('images/unemp_food.png', engine='kaleido')
-    
+
 
 def race_and_unemployment(food_data: pd.DataFrame) -> None:
     """
@@ -234,8 +236,9 @@ def race_and_unemployment(food_data: pd.DataFrame) -> None:
     hispanic = food_data['Subcategory'] == 'Hispanic'
     other = food_data['Subcategory'] == 'Other'
 
-    food_data = food_data[['Year', 'Category', 'Subcategory', 'Food insecure-percent']]
-    result = food_data[race & (white | black| hispanic | other)]
+    food_data = food_data[['Year', 'Category', 'Subcategory',
+                           'Food insecure-percent']]
+    result = food_data[race & (white | black | hispanic | other)]
     graph = px.line(result, x='Year', y='Food insecure-percent',
                     color='Subcategory')
 
@@ -251,7 +254,6 @@ def race_and_unemployment(food_data: pd.DataFrame) -> None:
 
 
 def gender_and_food(food_data: pd.DataFrame) -> None:
-
     """
     This function views how gender impacts food insecurity. A graph shows
     different households according to gender and plots the food insecure
@@ -263,10 +265,13 @@ def gender_and_food(food_data: pd.DataFrame) -> None:
     women_2 = food_data['Sub-subcategory'] == 'Women living alone'
     men_1 = food_data['Sub-subcategory'] == 'Male head, no spouse'
     men_2 = food_data['Sub-subcategory'] == 'Men living alone'
-    food_data = food_data[['Year', 'Category', 'Sub-subcategory', 'Food insecure-percent']]
-    result = food_data[(women_1 | women_2 | men_1 | men_2) & household_composition]
+    food_data = food_data[['Year', 'Category', 'Sub-subcategory',
+                           'Food insecure-percent']]
+    result = food_data[(women_1 | women_2 | men_1 | men_2) &
+                       household_composition]
 
-    graph = px.line(result, x='Year', y='Food insecure-percent', color='Sub-subcategory')
+    graph = px.line(result, x='Year', y='Food insecure-percent',
+                    color='Sub-subcategory')
     graph.update_layout(
         title='Food Insecurity by Gender Over Time',
         xaxis_title='Year',
@@ -284,40 +289,44 @@ def race_percent_change(food_data: pd.DataFrame) -> pd.DataFrame:
     dataframe and returns a pandas dataframe with information on the percent
     change in food insecurity rates for each race/ethnicity.
     """
-    food_data = food_data[['Year', 'Category', 'Subcategory', 'Food insecure-percent']]
+    food_data = food_data[['Year', 'Category', 'Subcategory',
+                           'Food insecure-percent']]
     race = food_data[food_data['Category'] == 'Race/ethnicity of households']
     race = race[['Year', 'Subcategory', 'Food insecure-percent']]
 
-    race = race.pivot(index='Subcategory', columns='Year', values='Food insecure-percent')
+    race = race.pivot(index='Subcategory', columns='Year',
+                      values='Food insecure-percent')
     race['Percent Change'] = (race[2021] - race[2019]) / race[2019] * 100
     race.index.name = 'Race/Ethnicity'
     race.columns.name = None
-    
+
 
 def main():
-    food_security_all_households: pd.DataFrame = pd.read_csv("C:/Users/angie/Desktop/cse-163/CSE163-Group28/food_security/Food security, all households_2021.csv")
-    unemployment_data: pd.DataFrame = pd.read_csv('C:/Users/angie/Desktop/cse-163/CSE163-Group28/unemployment/unemployment_data_us.csv')
+    food_security_all_households: pd.DataFrame = pd.read_csv("food_security/Food security, all households_2021.csv")
+    unemployment_data: pd.DataFrame = pd.read_csv('unemployment/unemployment_data_us.csv')
 
     # reformat and sort df by date
-    unemployment_data['Date'] = pd.to_datetime(unemployment_data['Date'], format='%b-%Y')
+    unemployment_data['Date'] = pd.to_datetime(unemployment_data['Date'],
+                                               format='%b-%Y')
     sorted_unemp = unemployment_data.sort_values('Date')
-    
+
     # creates graph of unemployment by education
     unemployment_and_education(sorted_unemp)
-    
+
     # creates graph of food insecurity rates
     food_insecurity(food_security_all_households)
-    
+
     # creates graph of unemployment and food insecurity with correlation
     unemp_and_food_insecurity(food_security_all_households, sorted_unemp)
 
-
     """
-    Explores the correlation between unemployment and food insecurity rates in the United States
+    Explores the correlation between unemployment and food insecurity rates in
+    the United States
     """
-    food_insecurity_df: pd.DataFrame = pd.read_csv("C:/Users/angie/Desktop/cse-163/CSE163-Group28/food_security/Food security, all households_2021.csv")
-    food_insecurity_df = food_insecurity_df[food_insecurity_df['Category'] == 'All households']
-    unemployment_df = pd.read_csv('C:/Users/angie/Desktop/cse-163/CSE163-Group28/unemployment/unemployment-Sheet1.csv')
+    food_insecurity_df: pd.DataFrame = pd.read_csv("food_security/Food security, all households_2021.csv")
+    food_insecurity_df = food_insecurity_df[food_insecurity_df['Category'] ==
+                                            'All households']
+    unemployment_df = pd.read_csv('unemployment/unemployment-Sheet1.csv')
     unemployment_df = unemployment_df.rename(columns={'year': 'Year'})
     combined_df = food_insecurity_df.merge(unemployment_df, on="Year")
     combined_df['Change_Food_Insecurity'] = combined_df['Food insecure-percent'].pct_change()
@@ -333,7 +342,6 @@ def main():
     ratio_insecurity_vs_unemployment_with_time_scatter_plot(combined_df)
     ratio_delta_insecurity_vs_delta_unemployment_with_time_bar_plot(combined_df)
 
-    ## tests the above methods to make sure there are outputs
     insecurity_vs_unemployment_scatter_plot_test()
     insecurity_vs_unemployment_with_time_scatter_plot_test()
     insecurity_vs_unemployment_with_time_bar_plot_test()
@@ -347,10 +355,11 @@ def main():
     food_insecurity_test()
     unemp_and_food_insecurity_test()
 
-    food_data: pd.DataFrame = pd.read_csv("C:/Users/angie/Desktop/cse-163/CSE163-Group28/food_security/Food security, all households_2021.csv")
+    food_data: pd.DataFrame = pd.read_csv("food_security/Food security, all households_2021.csv")
     race_and_unemployment(food_data)
     gender_and_food(food_data)
     race_percent_change(food_data)
+
 
 def insecurity_vs_unemployment_scatter_plot_test() -> None:
     file_path = "images/insecurity_vs_unemployment_scatter_plot.png"
@@ -358,13 +367,15 @@ def insecurity_vs_unemployment_scatter_plot_test() -> None:
         print("The file exists.")
     else:
         print("The file does not exist. " + file_path)
-        
+
+
 def insecurity_vs_unemployment_with_time_scatter_plot_test() -> None:
     file_path = "images/insecurity_vs_unemployment_with_time_scatter_plot.png"
     if os.path.exists(file_path):
         print("The file exists.")
     else:
         print("The file does not exist. " + file_path)
+
 
 def insecurity_vs_unemployment_with_time_bar_plot_test() -> None:
     file_path = "images/insecurity_vs_unemployment_with_time_bar_plot.png"
@@ -373,12 +384,14 @@ def insecurity_vs_unemployment_with_time_bar_plot_test() -> None:
     else:
         print("The file does not exist." + file_path)
 
+
 def delta_insecurity_vs_delta_unemployment_with_time_bar_plot_test() -> None:
     file_path = "images/delta_insecurity_vs_delta_unemployment_with_time_bar_plot.png"
     if os.path.exists(file_path):
         print("The file exists.")
     else:
         print("The file does not exist. " + file_path)
+
 
 def ratio_insecurity_vs_unemployment_with_time_bar_plot_test() -> None:
     file_path = "images/ratio_insecurity_vs_unemployment_with_time_bar_plot.png"
@@ -387,12 +400,14 @@ def ratio_insecurity_vs_unemployment_with_time_bar_plot_test() -> None:
     else:
         print("The file does not exist." + file_path)
 
+
 def ratio_insecurity_vs_unemployment_with_time_scatter_plot_test() -> None:
     file_path = "images/ratio_insecurity_vs_unemployment_with_time_scatter_plot.png"
     if os.path.exists(file_path):
         print("The file exists.")
     else:
         print("The file does not exist. " + file_path)
+
 
 def ratio_delta_insecurity_vs_delta_unemployment_with_time_bar_plot_test() -> None:
     file_path = "images/ratio_delta_insecurity_vs_delta_unemployment_with_time_bar_plot.png"
@@ -401,13 +416,14 @@ def ratio_delta_insecurity_vs_delta_unemployment_with_time_bar_plot_test() -> No
     else:
         print("The file does not exist. " + file_path)
 
-##
+
 def race_and_unemployment_test() -> None:
     file_path = "images/race_and_unemployment.png"
     if os.path.exists(file_path):
         print("The file exists.")
     else:
         print("The file does not exist. " + file_path)
+
 
 def gender_and_food_test() -> None:
     file_path = "images/gender_and_food.png"
@@ -416,13 +432,14 @@ def gender_and_food_test() -> None:
     else:
         print("The file does not exist. " + file_path)
 
-##
+
 def unemployment_and_education_test() -> None:
     file_path = "images/unemp_edu.png"
     if os.path.exists(file_path):
         print("The file exists.")
     else:
         print("The file does not exist. " + file_path)
+
 
 def food_insecurity_test() -> None:
     file_path = "images/food_insecurity_all_hh.png"
@@ -431,12 +448,14 @@ def food_insecurity_test() -> None:
     else:
         print("The file does not exist. " + file_path)
 
+
 def unemp_and_food_insecurity_test() -> None:
     file_path = "images/unemp_food.png"
     if os.path.exists(file_path):
         print("The file exists.")
     else:
         print("The file does not exist. " + file_path)
+
 
 if __name__ == "__main__":
     main()
